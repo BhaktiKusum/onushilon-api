@@ -1,0 +1,303 @@
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+
+import {
+  DifficultyLevel,
+  MCQType,
+} from '@prisma/client';
+
+import { PrismaService } from '../../../prisma/prisma.service';
+
+import { CreateMcqDto } from '../dto/create-mcq.dto';
+import { QueryMcqDto } from '../dto/query-mcq.dto';
+import { UpdateMcqDto } from '../dto/update-mcq.dto';
+
+@Injectable()
+export class McqsService {
+  constructor(
+    private readonly prisma: PrismaService,
+  ) {}
+
+  /**
+   * Create MCQ
+   */
+  async create(dto: CreateMcqDto) {
+    await this.validateHierarchy(
+      dto.subjectId,
+      dto.chapterId,
+      dto.topicId,
+    );
+
+    this.validateOptions(
+      dto.options,
+      dto.correctOptionKey,
+    );
+
+    return this.prisma.mCQ.create({
+      data: {
+        ...dto,
+
+        optionCount: dto.options.length,
+      },
+    });
+  }
+
+  /**
+   * Get MCQs
+   */
+  async findAll(
+    query: QueryMcqDto,
+  ) {
+    const {
+      subjectId,
+      chapterId,
+      topicId,
+      difficulty,
+      type,
+    } = query;
+
+    return this.prisma.mCQ.findMany({
+      where: {
+        isActive: true,
+
+        ...(subjectId && {
+          subjectId,
+        }),
+
+        ...(chapterId && {
+          chapterId,
+        }),
+
+        ...(topicId && {
+          topicId,
+        }),
+
+        ...(difficulty && {
+          difficulty,
+        }),
+
+        ...(type && {
+          type,
+        }),
+      },
+
+      include: {
+        subject: true,
+        chapter: true,
+        topic: true,
+      },
+
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
+
+  /**
+   * Get Single MCQ
+   */
+  async findOne(id: string) {
+    const mcq =
+      await this.prisma.mCQ.findUnique({
+        where: {
+          id,
+        },
+
+        include: {
+          subject: true,
+          chapter: true,
+          topic: true,
+        },
+      });
+
+    if (!mcq) {
+      throw new NotFoundException(
+        'MCQ not found',
+      );
+    }
+
+    return mcq;
+  }
+
+  /**
+   * Update MCQ
+   */
+  async update(
+    id: string,
+    dto: UpdateMcqDto,
+  ) {
+    const existingMcq =
+      await this.findOne(id);
+
+    const subjectId =
+      dto.subjectId ??
+      existingMcq.subjectId;
+
+    const chapterId =
+      dto.chapterId ??
+      existingMcq.chapterId;
+
+    const topicId =
+      dto.topicId ??
+      existingMcq.topicId;
+
+    await this.validateHierarchy(
+      subjectId,
+      chapterId,
+      topicId,
+    );
+
+    if (
+      dto.options &&
+      dto.correctOptionKey
+    ) {
+      this.validateOptions(
+        dto.options,
+        dto.correctOptionKey,
+      );
+    }
+
+    return this.prisma.mCQ.update({
+      where: {
+        id,
+      },
+
+      data: {
+        ...dto,
+
+        ...(dto.options && {
+          optionCount:
+            dto.options.length,
+        }),
+      },
+    });
+  }
+
+  /**
+   * Soft Delete MCQ
+   */
+  async remove(id: string) {
+    await this.findOne(id);
+
+    return this.prisma.mCQ.update({
+      where: {
+        id,
+      },
+
+      data: {
+        isActive: false,
+      },
+    });
+  }
+
+  /**
+   * Toggle Premium
+   */
+  async updatePremium(
+    id: string,
+    isPremium: boolean,
+  ) {
+    await this.findOne(id);
+
+    return this.prisma.mCQ.update({
+      where: {
+        id,
+      },
+
+      data: {
+        isPremium,
+      },
+    });
+  }
+
+  /**
+   * Validate Subject-Chapter-Topic Relation
+   */
+  private async validateHierarchy(
+    subjectId: string,
+    chapterId: string,
+    topicId: string,
+  ) {
+    const topic =
+      await this.prisma.topic.findUnique({
+        where: {
+          id: topicId,
+        },
+
+        include: {
+          chapter: true,
+        },
+      });
+
+    if (!topic) {
+      throw new BadRequestException(
+        'Topic not found',
+      );
+    }
+
+    if (
+      topic.chapter.id !== chapterId
+    ) {
+      throw new BadRequestException(
+        'Topic does not belong to chapter',
+      );
+    }
+
+    if (
+      topic.chapter.subjectId !==
+      subjectId
+    ) {
+      throw new BadRequestException(
+        'Chapter does not belong to subject',
+      );
+    }
+  }
+
+  /**
+   * Validate MCQ Options
+   */
+  private validateOptions(
+    options: any[],
+    correctOptionKey: string,
+  ) {
+    if (
+      options.length < 2 ||
+      options.length > 5
+    ) {
+      throw new BadRequestException(
+        'Option count must be between 2 and 5',
+      );
+    }
+
+    const keys = options.map(
+      option => option.key,
+    );
+
+    const uniqueKeys = new Set(keys);
+
+    if (
+      uniqueKeys.size !==
+      options.length
+    ) {
+      throw new BadRequestException(
+        'Duplicate option key found',
+      );
+    }
+
+    const correctExists =
+      options.some(
+        option =>
+          option.key ===
+          correctOptionKey,
+      );
+
+    if (!correctExists) {
+      throw new BadRequestException(
+        'Correct option key invalid',
+      );
+    }
+  }
+}

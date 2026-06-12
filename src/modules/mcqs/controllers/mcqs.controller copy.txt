@@ -1,0 +1,124 @@
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
+
+import { UserRole } from '../../../common/enums/user-role.enum';
+
+import { Roles } from '../../../common/decorators/roles.decorator';
+
+import { JwtAuthGuard } from '../../../common/guards/jwt-auth.guard';
+import { RolesGuard } from '../../../common/guards/roles.guard';
+
+import { McqsService } from '../services/mcqs.service';
+
+import { CreateMcqDto } from '../dto/create-mcq.dto';
+import { UpdateMcqDto } from '../dto/update-mcq.dto';
+import { QueryMcqDto } from '../dto/query-mcq.dto';
+import { TogglePremiumDto } from '../dto/toggle-premium.dto';
+
+import { ApiBearerAuth } from '@nestjs/swagger';
+
+
+
+@ApiBearerAuth('access-token')
+
+@Controller('mcqs')
+@UseGuards(
+  JwtAuthGuard,
+  RolesGuard,
+)
+@Roles(
+  UserRole.ADMIN,
+  UserRole.SUBADMIN,
+)
+export class McqsController {
+  constructor(
+    private readonly mcqsService: McqsService,
+  ) {}
+
+  /**
+   * Create MCQ
+   */
+  @Post()
+  create(
+    @Body()
+    dto: CreateMcqDto,
+  ) {
+    return this.mcqsService.create(dto);
+  }
+
+  /**
+   * Get MCQs
+   */
+  @Get()
+  findAll(
+    @Query()
+    query: QueryMcqDto,
+  ) {
+    return this.mcqsService.findAll(query);
+  }
+
+  /**
+   * Get Single MCQ
+   */
+  @Get(':id')
+  findOne(
+    @Param('id')
+    id: string,
+  ) {
+    return this.mcqsService.findOne(id);
+  }
+
+  /**
+   * Update MCQ
+   */
+  @Patch(':id')
+  update(
+    @Param('id')
+    id: string,
+
+    @Body()
+    dto: UpdateMcqDto,
+  ) {
+    return this.mcqsService.update(
+      id,
+      dto,
+    );
+  }
+
+  /**
+   * Toggle Premium
+   */
+  @Patch(':id/premium')
+  updatePremium(
+    @Param('id')
+    id: string,
+
+    @Body()
+    dto: TogglePremiumDto,
+  ) {
+    return this.mcqsService.updatePremium(
+      id,
+      dto.isPremium,
+    );
+  }
+
+  /**
+   * Delete MCQ
+   */
+  @Delete(':id')
+  remove(
+    @Param('id')
+    id: string,
+  ) {
+    return this.mcqsService.remove(id);
+  }
+}

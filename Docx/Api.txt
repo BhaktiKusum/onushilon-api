@@ -1,0 +1,302 @@
+Auth
+POST /api/v1/auth/student/signup
+
+Body
+{
+  "phone": "01711111111",
+  "password": "12345",
+  "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e"
+}
+
+POST /api/v1/auth/login
+Body
+{
+  "phone": "01711111111",
+  "password": "12345678"
+}
+
+Response
+{
+  "accessToken": "  "
+}
+
+POST /api/v1/auth/logout
+
+
+Student
+GET /api/v1/users/profile
+Response
+	
+Response body
+{
+  "id": "cmpwlocvs0001wagsx3740xm1",
+  "phone": "01711111111",
+  "password": "$2b$10$1CMGOI07LXWs4XM4.uTzXuR0ZNDsBfxsHDibTL0jLIqIbm6zUvRKC",
+  "role": "STUDENT",
+  "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e",
+  "name": null,
+  "isActive": true,
+  "createdAt": "2026-06-02T12:14:54.521Z",
+  "updatedAt": "2026-06-02T12:14:54.521Z",
+  "academicLevel": {
+    "id": "cmpwlkz0a0000wa0o4iv1yo4e",
+    "name": "Class 6",
+    "createdAt": "2026-06-02T12:12:16.570Z",
+    "updatedAt": "2026-06-02T12:11:55.160Z"
+  }
+}
+
+PATCH /api/v1/users/change-name
+Body
+{
+  "name": "John Doe"
+}
+
+Response body
+{
+  "id": "cmpwlocvs0001wagsx3740xm1",
+  "phone": "01711111111",
+  "password": "$2b$10$1CMGOI07LXWs4XM4.uTzXuR0ZNDsBfxsHDibTL0jLIqIbm6zUvRKC",
+  "role": "STUDENT",
+  "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e",
+  "name": "John Doe",
+  "isActive": true,
+  "createdAt": "2026-06-02T12:14:54.521Z",
+  "updatedAt": "2026-06-03T04:35:51.089Z"
+}
+
+PATCH /api/v1/users/change-password
+Body
+{
+  "currentPassword": "123456",
+  "newPassword": "123456789"
+}
+Response body
+{
+  "message": "Password changed successfully"
+}
+
+
+
+Admin User Management
+Admin/Subadmin
+
+Create Admin/Subadmin
+
+POST /api/v1/users/admins
+Body
+{
+  "phone": "01777777777",
+  "password": "12345678",
+  "role": "ADMIN"
+}
+or
+{
+  "phone": "01777777777",
+  "password": "12345678",
+  "role": "SUBADMIN"
+}
+
+List Admins
+GET /api/v1/users/admins
+******
+Admin Details
+GET /api/v1/users/admins/:id
+
+Update Admin
+PATCH /api/v1/users/admins/:id
+
+Delete Admin
+DELETE /api/v1/users/admins/:id
+
+
+Student Management
+Admin Panel
+
+GET /api/v1/users/students
+
+Filters:
+GET /api/v1/users/students?page=1
+GET /api/v1/users/students?academicLevelId=
+GET /api/v1/users/students?search=
+GET /api/v1/users/students/:id
+
+
+Academic Level APIs
+Admin
+
+List
+
+GET /api/v1/academic-levels
+
+Details
+
+GET /api/v1/academic-levels/:id
+Subject APIs
+Admin
+
+Create
+
+POST /api/v1/subjects
+
+Body
+
+{
+  "name": "Bangla",
+  "adminDisplayName": "SSC Bangla"
+}
+
+List
+
+GET /api/v1/subjects
+
+Filters
+
+GET /api/v1/subjects?search=
+
+Details
+
+GET /api/v1/subjects/:id
+
+Update
+
+PATCH /api/v1/subjects/:id
+
+Delete
+
+DELETE /api/v1/subjects/:id
+Subject Assignment APIs
+Admin
+
+Assign subject to levels
+
+POST /api/v1/subject-assignments
+
+Body
+
+{
+  "subjectId": "subject-id",
+  "academicLevelIds": [
+    "level-1",
+    "level-2",
+    "level-3"
+  ]
+}
+
+Assigned List
+
+GET /api/v1/subject-assignments
+
+Academic Level Subjects
+
+GET /api/v1/subject-assignments/academic-level/:academicLevelId
+
+Remove Assignment
+
+DELETE /api/v1/subject-assignments/:id
+Student Subject APIs
+
+Student frontend will use:
+
+GET /api/v1/student/subjects
+
+Example:
+
+Logged in Student
+SSC Science
+
+Returns only:
+
+SSC Bangla
+SSC English
+Physics
+Chemistry
+Biology
+Math
+
+No need to send academicLevelId from frontend.
+
+Use JWT user.
+
+Chapter APIs
+Admin
+
+Create
+
+POST /api/v1/chapters
+
+Body
+
+{
+  "subjectId": "",
+  "name": "Chapter 1"
+}
+
+List
+
+GET /api/v1/chapters
+
+Subject Chapters
+
+GET /api/v1/chapters?subjectId=
+
+Details
+
+GET /api/v1/chapters/:id
+
+Update
+
+PATCH /api/v1/chapters/:id
+
+Delete
+
+DELETE /api/v1/chapters/:id
+Topic APIs
+Admin
+
+Create
+
+POST /api/v1/topics
+
+Body
+
+{
+  "chapterId": "",
+  "name": "Topic A"
+}
+
+List
+
+GET /api/v1/topics
+
+Chapter Topics
+
+GET /api/v1/topics?chapterId=
+
+Details
+
+GET /api/v1/topics/:id
+
+Update
+
+PATCH /api/v1/topics/:id
+
+Delete
+
+DELETE /api/v1/topics/:id
+
+Student Learning Tree APIs
+
+These will be heavily used by the frontend.
+
+Get student's subjects:
+
+GET /api/v1/student/subjects
+
+Get chapters of subject:
+
+GET /api/v1/student/subjects/:subjectId/chapters
+
+Get topics of chapter:
+
+GET /api/v1/student/chapters/:chapterId/topics

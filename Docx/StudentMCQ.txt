@@ -1,0 +1,226 @@
+
+Get  /api/v1/mcqs
+get by subject, by chapter, by topics,
+in quary 
+        subjectId,
+        chapterId,
+        topicId,
+        difficulty,
+        type,
+Response 
+[
+  {
+    "id": "cmpyqfptw0003wajsxc2efss3",
+    "subjectId": "cmpxrbxdo0001wa2orc6wrior",
+    "chapterId": "cmpy7xswo0004wassvtafget8",
+    "topicId": "cmpy88s880006wassse04yw02",
+    "type": "STANDARD",
+    "scenario": {
+      "text": "question scenario",
+      "image": null
+    },
+    "question": {
+      "text": "What does this symbol represent?",
+      "image": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "text": "Resistor",
+        "image": null
+      },
+      {
+        "key": "B",
+        "text": "Capacitor",
+        "image": null
+      }
+    ],
+    "correctOptionKey": "B",
+    "explanation": {
+      "text": "Capacitor symbol",
+      "image": null
+    },
+    "references": [
+      {
+        "type": "BOOK",
+        "value": "HSC Physics"
+      }
+    ],
+    "optionCount": 2,
+    "difficulty": "EASY",
+    "isPremium": false,
+    "isActive": true,
+    "createdAt": "2026-06-04T00:03:41.828Z",
+    "updatedAt": "2026-06-04T00:03:41.828Z",
+    "subject": {
+      "id": "cmpxrbxdo0001wa2orc6wrior",
+      "name": "Bangla",
+      "adminDisplayName": "SSC Bangla",
+      "isActive": true,
+      "createdAt": "2026-06-03T07:40:58.428Z",
+      "updatedAt": "2026-06-03T07:40:58.428Z"
+    },
+    "chapter": {
+      "id": "cmpy7xswo0004wassvtafget8",
+      "name": "Chapter 1 dfs",
+      "orderNo": 4,
+      "subjectId": "cmpxrbxdo0001wa2orc6wrior",
+      "isActive": true,
+      "createdAt": "2026-06-03T15:25:52.920Z",
+      "updatedAt": "2026-06-03T15:32:05.922Z"
+    },
+    "topic": {
+      "id": "cmpy88s880006wassse04yw02",
+      "name": "Topic A",
+      "orderNo": 5,
+      "chapterId": "cmpy7xswo0004wassvtafget8",
+      "isActive": true,
+      "createdAt": "2026-06-03T15:34:25.257Z",
+      "updatedAt": "2026-06-03T15:38:36.876Z"
+    }
+  },
+  {
+    "id": "cmpyqbzgw0001wajsdqnuprw1",
+    "subjectId": "cmpxrbxdo0001wa2orc6wrior",
+    "chapterId": "cmpy7xswo0004wassvtafget8",
+    "topicId": "cmpy88s880006wassse04yw02",
+    "type": "STANDARD",
+    "scenario": null,
+    "question": {
+      "text": "What does this symbol represent?",
+      "image": null
+    },
+    "options": [
+      {
+        "key": "A",
+        "text": "Resistor",
+        "image": null
+      },
+      {
+        "key": "B",
+        "text": "Capacitor",
+        "image": null
+      }
+    ],
+    "correctOptionKey": "B",
+    "explanation": {
+      "text": "Capacitor symbol",
+      "image": null
+    },
+    "references": [
+      {
+        "type": "BOOK",
+        "value": "HSC Physics"
+      }
+    ],
+    "optionCount": 2,
+    "difficulty": "EASY",
+    "isPremium": false,
+    "isActive": true,
+    "createdAt": "2026-06-04T00:00:47.695Z",
+    "updatedAt": "2026-06-04T00:00:47.695Z",
+    "subject": {
+      "id": "cmpxrbxdo0001wa2orc6wrior",
+      "name": "Bangla",
+      "adminDisplayName": "SSC Bangla",
+      "isActive": true,
+      "createdAt": "2026-06-03T07:40:58.428Z",
+      "updatedAt": "2026-06-03T07:40:58.428Z"
+    },
+    "chapter": {
+      "id": "cmpy7xswo0004wassvtafget8",
+      "name": "Chapter 1 dfs",
+      "orderNo": 4,
+      "subjectId": "cmpxrbxdo0001wa2orc6wrior",
+      "isActive": true,
+      "createdAt": "2026-06-03T15:25:52.920Z",
+      "updatedAt": "2026-06-03T15:32:05.922Z"
+    },
+    "topic": {
+      "id": "cmpy88s880006wassse04yw02",
+      "name": "Topic A",
+      "orderNo": 5,
+      "chapterId": "cmpy7xswo0004wassvtafget8",
+      "isActive": true,
+      "createdAt": "2026-06-03T15:34:25.257Z",
+      "updatedAt": "2026-06-03T15:38:36.876Z"
+    }
+  }
+]
+
+
+******************************************************
+GET specific MCQ
+GET /api/v1/mcq/{id}
+
+Response 
+{
+  "id": "cmpyqfptw0003wajsxc2efss3",
+  "subjectId": "cmpxrbxdo0001wa2orc6wrior",
+  "chapterId": "cmpy7xswo0004wassvtafget8",
+  "topicId": "cmpy88s880006wassse04yw02",
+  "type": "STANDARD",
+  "scenario": {
+    "text": "question scenario",
+    "image": null
+  },
+  "question": {
+    "text": "What does this symbol represent?",
+    "image": null
+  },
+  "options": [
+    {
+      "key": "A",
+      "text": "Resistor",
+      "image": null
+    },
+    {
+      "key": "B",
+      "text": "Capacitor",
+      "image": null
+    }
+  ],
+  "correctOptionKey": "B",
+  "explanation": {
+    "text": "Capacitor symbol",
+    "image": null
+  },
+  "references": [
+    {
+      "type": "BOOK",
+      "value": "HSC Physics"
+    }
+  ],
+  "optionCount": 2,
+  "difficulty": "EASY",
+  "isPremium": false,
+  "isActive": true,
+  "createdAt": "2026-06-04T00:03:41.828Z",
+  "updatedAt": "2026-06-04T00:03:41.828Z",
+  "subject": {
+    "id": "cmpxrbxdo0001wa2orc6wrior",
+    "name": "Bangla",
+    "adminDisplayName": "SSC Bangla",
+    "isActive": true,
+    "createdAt": "2026-06-03T07:40:58.428Z",
+    "updatedAt": "2026-06-03T07:40:58.428Z"
+  },
+  "chapter": {
+    "id": "cmpy7xswo0004wassvtafget8",
+    "name": "Chapter 1 dfs",
+    "orderNo": 4,
+    "subjectId": "cmpxrbxdo0001wa2orc6wrior",
+    "isActive": true,
+    "createdAt": "2026-06-03T15:25:52.920Z",
+    "updatedAt": "2026-06-03T15:32:05.922Z"
+  },
+  "topic": {
+    "id": "cmpy88s880006wassse04yw02",
+    "name": "Topic A",
+    "orderNo": 5,
+    "chapterId": "cmpy7xswo0004wassvtafget8",
+    "isActive": true,
+    "createdAt": "2026-06-03T15:34:25.257Z",
+    "updatedAt": "2026-06-03T15:38:36.876Z"
+  }
+}

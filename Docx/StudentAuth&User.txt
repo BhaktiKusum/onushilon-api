@@ -1,0 +1,99 @@
+Auth
+POST /api/v1/auth/student/signup
+
+Body
+{
+  "phone": "01711111111",
+  "password": "12345",
+  "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e"
+}
+
+POST /api/v1/auth/login
+Body
+{
+  "phone": "01711111111",
+  "password": "12345678"
+}
+
+Response
+{
+  "accessToken": "  "
+}
+
+POST /api/v1/auth/logout
+
+
+Student
+GET /api/v1/users/profile
+Response
+	
+Response body
+{
+  "id": "cmpwlocvs0001wagsx3740xm1",
+  "phone": "01711111111",
+  "password": "$2b$10$1CMGOI07LXWs4XM4.uTzXuR0ZNDsBfxsHDibTL0jLIqIbm6zUvRKC",
+  "role": "STUDENT",
+  "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e",
+  "name": null,
+  "isActive": true,
+  "createdAt": "2026-06-02T12:14:54.521Z",
+  "updatedAt": "2026-06-02T12:14:54.521Z",
+  "academicLevel": {
+    "id": "cmpwlkz0a0000wa0o4iv1yo4e",
+    "name": "Class 6",
+    "createdAt": "2026-06-02T12:12:16.570Z",
+    "updatedAt": "2026-06-02T12:11:55.160Z"
+  }
+}
+
+PATCH /api/v1/users/change-name
+Body
+{
+  "name": "John Doe"
+}
+
+Response body
+{
+  "id": "cmpwlocvs0001wagsx3740xm1",
+  "phone": "01711111111",
+  "password": "$2b$10$1CMGOI07LXWs4XM4.uTzXuR0ZNDsBfxsHDibTL0jLIqIbm6zUvRKC",
+  "role": "STUDENT",
+  "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e",
+  "name": "John Doe",
+  "isActive": true,
+  "createdAt": "2026-06-02T12:14:54.521Z",
+  "updatedAt": "2026-06-03T04:35:51.089Z"
+}
+
+PATCH /api/v1/users/change-password
+Body
+{
+  "currentPassword": "123456",
+  "newPassword": "123456789"
+}
+Response body
+{
+  "message": "Password changed successfully"
+}
+
+
+GET /api/v1/academic-levels
+Response
+[
+  {
+    "id": "cmpwlkz0a0000wa0o4iv1yo4e",
+    "name": "Class 6",
+    "createdAt": "2026-06-02T12:12:16.570Z",
+    "updatedAt": "2026-06-02T12:11:55.160Z"
+  }
+]
+
+PATCH /api/v1/users/change-academic-level
+Body
+{
+  "academicLevelId": " "
+}
+Response body
+{
+  "message": "Academic Level changed successfully"
+}

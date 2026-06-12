@@ -1,0 +1,47 @@
+import {
+  IsArray,
+  IsBoolean,
+  IsEnum,
+  IsOptional,
+  IsString,
+} from 'class-validator';
+
+import {
+  DifficultyLevel,
+  MCQType,
+} from '@prisma/client';
+
+export class CreateMcqDto {
+  @IsString()
+  subjectId: string;
+
+  @IsString()
+  chapterId: string;
+
+  @IsString()
+  topicId: string;
+
+  @IsEnum(MCQType)
+  type: MCQType;
+
+  scenario?: Record<string, any>;
+
+  question: Record<string, any>;
+
+  @IsArray()
+  options: Record<string, any>[];
+
+  @IsString()
+  correctOptionKey: string;
+
+  explanation?: Record<string, any>;
+
+  references?: Record<string, any>[];
+
+  @IsEnum(DifficultyLevel)
+  difficulty: DifficultyLevel;
+
+  @IsOptional()
+  @IsBoolean()
+  isPremium?: boolean;
+}

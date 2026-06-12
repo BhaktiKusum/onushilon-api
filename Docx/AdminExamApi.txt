@@ -1,0 +1,500 @@
+Exam
+POST /api/v1/exam 
+Body
+{
+  "title": "SSC Science Model Test 2026",
+  "description": "Full syllabus model test",
+
+  "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e",
+
+  "type": "LIVE/PRACTICE",
+  "enrollmentType": "OPEN",
+
+  "durationMinutes": 60,
+  "totalMarks": 100,
+  "negativeMarks": 0.25,
+
+  "startAt": "2026-06-30T10:00:00.000Z",
+  "endAt": "2026-06-30T11:00:00.000Z",
+
+  "maxParticipants": 1000,
+
+  "orderNo": 1
+}
+
+	
+Response 
+{
+  "id": "cmq1nar5i0001wah8ypt2268w",
+  "title": "SSC Science Model Test 2026",
+  "description": "Full syllabus model test",
+  "type": "LIVE",
+  "enrollmentType": "OPEN",
+  "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e",
+  "orderNo": 1,
+  "durationMinutes": 60,
+  "totalMarks": 100,
+  "negativeMarks": "0.25",
+  "startAt": "2026-06-30T10:00:00.000Z",
+  "endAt": "2026-06-30T11:00:00.000Z",
+  "maxParticipants": 1000,
+  "isPublished": false,
+  "isActive": true,
+  "createdAt": "2026-06-06T00:59:09.943Z",
+  "updatedAt": "2026-06-06T00:59:09.943Z",
+  "subjectId": null,
+  "chapterId": null
+}
+
+
+GET /api/v1/exam 
+Response
+[
+  {
+    "id": "cmq1nar5i0001wah8ypt2268w",
+    "title": "SSC Science Model Test 2026",
+    "description": "Full syllabus model test",
+    "type": "LIVE",
+    "enrollmentType": "OPEN",
+    "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e",
+    "orderNo": 1,
+    "durationMinutes": 60,
+    "totalMarks": 100,
+    "negativeMarks": "0.25",
+    "startAt": "2026-06-30T10:00:00.000Z",
+    "endAt": "2026-06-30T11:00:00.000Z",
+    "maxParticipants": 1000,
+    "isPublished": false,
+    "isActive": true,
+    "createdAt": "2026-06-06T00:59:09.943Z",
+    "updatedAt": "2026-06-06T00:59:09.943Z",
+    "subjectId": null,
+    "chapterId": null,
+    "academicLevel": {
+      "id": "cmpwlkz0a0000wa0o4iv1yo4e",
+      "name": "class 7 ds",
+      "createdAt": "2026-06-02T12:12:16.570Z",
+      "updatedAt": "2026-06-03T15:02:41.434Z"
+    }
+  }
+]
+
+GET /api/v1/exam/{id} 
+Response 
+{
+  "id": "cmq1nar5i0001wah8ypt2268w",
+  "title": "SSC Science Model Test 2026",
+  "description": "Full syllabus model test",
+  "type": "LIVE",
+  "enrollmentType": "OPEN",
+  "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e",
+  "orderNo": 1,
+  "durationMinutes": 60,
+  "totalMarks": 100,
+  "negativeMarks": "0.25",
+  "startAt": "2026-06-30T10:00:00.000Z",
+  "endAt": "2026-06-30T11:00:00.000Z",
+  "maxParticipants": 1000,
+  "isPublished": false,
+  "isActive": true,
+  "createdAt": "2026-06-06T00:59:09.943Z",
+  "updatedAt": "2026-06-06T00:59:09.943Z",
+  "subjectId": null,
+  "chapterId": null,
+  "academicLevel": {
+    "id": "cmpwlkz0a0000wa0o4iv1yo4e",
+    "name": "class 7 ds",
+    "createdAt": "2026-06-02T12:12:16.570Z",
+    "updatedAt": "2026-06-03T15:02:41.434Z"
+  },
+  "subjects": [
+    {
+      "id": "cmq1nk4hj0000wao05pk7y0n8",
+      "examId": "cmq1nar5i0001wah8ypt2268w",
+      "subjectId": "cmpy06tpl0001waj05gdxtjdr",
+      "subject": {
+        "id": "cmpy06tpl0001waj05gdxtjdr",
+        "name": "Bangla 2",
+        "adminDisplayName": "SSC Bangla 2",
+        "isActive": false,
+        "createdAt": "2026-06-03T11:48:56.937Z",
+        "updatedAt": "2026-06-03T16:50:29.550Z"
+      }
+    }
+  ],
+  "chapters": [
+    {
+      "id": "cmq1nrvxz000kwatgklbwqgtx",
+      "examId": "cmq1nar5i0001wah8ypt2268w",
+      "chapterId": "cmq1nnhye0001watge5kdo7w7",
+      "chapter": {
+        "id": "cmq1nnhye0001watge5kdo7w7",
+        "name": "chapte1 ",
+        "orderNo": 1,
+        "subjectId": "cmpy06tpl0001waj05gdxtjdr",
+        "isActive": true,
+        "createdAt": "2026-06-06T01:09:04.550Z",
+        "updatedAt": "2026-06-06T01:09:04.550Z"
+      }
+    }
+  ],
+  "mcqs": []
+}
+
+or 
+{
+  "id": "cmq1nar5i0001wah8ypt2268w",
+  "title": "SSC Science Model Test 2026",
+  "description": "Full syllabus model test",
+  "type": "LIVE",
+  "enrollmentType": "OPEN",
+  "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e",
+  "orderNo": 1,
+  "durationMinutes": 60,
+  "totalMarks": 100,
+  "negativeMarks": "0.25",
+  "startAt": "2026-06-30T10:00:00.000Z",
+  "endAt": "2026-06-30T11:00:00.000Z",
+  "maxParticipants": 1000,
+  "isPublished": false,
+  "isActive": true,
+  "createdAt": "2026-06-06T00:59:09.943Z",
+  "updatedAt": "2026-06-06T00:59:09.943Z",
+  "subjectId": null,
+  "chapterId": null,
+  "academicLevel": {
+    "id": "cmpwlkz0a0000wa0o4iv1yo4e",
+    "name": "class 7 ds",
+    "createdAt": "2026-06-02T12:12:16.570Z",
+    "updatedAt": "2026-06-03T15:02:41.434Z"
+  },
+  "subjects": [
+    {
+      "id": "cmq1nk4hj0000wao05pk7y0n8",
+      "examId": "cmq1nar5i0001wah8ypt2268w",
+      "subjectId": "cmpy06tpl0001waj05gdxtjdr",
+      "subject": {
+        "id": "cmpy06tpl0001waj05gdxtjdr",
+        "name": "Bangla 2",
+        "adminDisplayName": "SSC Bangla 2",
+        "isActive": false,
+        "createdAt": "2026-06-03T11:48:56.937Z",
+        "updatedAt": "2026-06-03T16:50:29.550Z"
+      }
+    }
+  ],
+  "chapters": [
+    {
+      "id": "cmq1nrvxz000kwatgklbwqgtx",
+      "examId": "cmq1nar5i0001wah8ypt2268w",
+      "chapterId": "cmq1nnhye0001watge5kdo7w7",
+      "chapter": {
+        "id": "cmq1nnhye0001watge5kdo7w7",
+        "name": "chapte1 ",
+        "orderNo": 1,
+        "subjectId": "cmpy06tpl0001waj05gdxtjdr",
+        "isActive": true,
+        "createdAt": "2026-06-06T01:09:04.550Z",
+        "updatedAt": "2026-06-06T01:09:04.550Z"
+      }
+    }
+  ],
+  "mcqs": [
+    {
+      "id": "cmq1ofr110000waq4pf3ktzn8",
+      "examId": "cmq1nar5i0001wah8ypt2268w",
+      "mcqId": "cmq1nomn60009watg36xn33jb",
+      "orderNo": 1,
+      "mark": "1",
+      "createdAt": "2026-06-06T01:31:02.677Z"
+    },
+    {
+      "id": "cmq1ofr110001waq40jznx7g3",
+      "examId": "cmq1nar5i0001wah8ypt2268w",
+      "mcqId": "cmq1novez000bwatgpff6jo0y",
+      "orderNo": 2,
+      "mark": "1",
+      "createdAt": "2026-06-06T01:31:02.677Z"
+    }
+  ]
+}
+
+PATCH /api/v1/exam/{id} 
+Body 
+{
+  "title": "SSC Science Model Test 2026",
+  "description": "Full syllabus model test",
+
+  "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e",
+
+  "type": "LIVE/PRACTICE",
+  "enrollmentType": "OPEN",
+
+  "durationMinutes": 60,
+  "totalMarks": 100,
+  "negativeMarks": 0.25,
+
+  "startAt": "2026-06-30T10:00:00.000Z",
+  "endAt": "2026-06-30T11:00:00.000Z",
+
+  "maxParticipants": 1000,
+
+  "orderNo": 1
+}
+
+DELETE /api/v1/exam/{id}
+
+PATCH /api/v1/exam/{id}/publish
+Body
+{}
+
+or no body.
+
+Response
+{
+  "id": "cm_exam_123",
+  "isPublished": true
+}
+
+
+
+
+Exam Subject
+POST /api/v1/exam/{examId}/subjects
+Body
+{
+  "subjectIds": [
+    "subject-id-1",
+    "subject-id-2",
+    "subject-id-3"
+  ]
+}
+or 
+{
+  "subjectIds": [
+    "cmpy06tpl0001waj05gdxtjdr"
+  ]
+}
+
+Response:
+{
+  "message": "Subjects assigned successfully"
+}
+GET /api/v1/exam/{examId}/subjects
+Response 
+[
+  {
+    "id": "cmq1nk4hj0000wao05pk7y0n8",
+    "examId": "cmq1nar5i0001wah8ypt2268w",
+    "subjectId": "cmpy06tpl0001waj05gdxtjdr",
+    "subject": {
+      "id": "cmpy06tpl0001waj05gdxtjdr",
+      "name": "Bangla 2",
+      "adminDisplayName": "SSC Bangla 2",
+      "isActive": false,
+      "createdAt": "2026-06-03T11:48:56.937Z",
+      "updatedAt": "2026-06-03T16:50:29.550Z"
+    }
+  }
+]
+
+DELETE /api/v1/exam/{examId}/subjects
+
+
+
+Exam Chapter
+POST /api/v1/exam/{examId}/chapters
+body
+{
+  "chapterIds": [
+    "chapter-id-1",
+    "chapter-id-2",
+    "chapter-id-3"
+  ]
+}
+or 
+{
+  "chapterIds": [
+    "cmq1nnhye0001watge5kdo7w7"
+  ]
+}
+Response 
+{
+  "message": "Chapters assigned successfully"
+}
+GET /api/v1/exam/{examId}/chapters
+Response 
+[
+  {
+    "id": "cmq1nrvxz000kwatgklbwqgtx",
+    "examId": "cmq1nar5i0001wah8ypt2268w",
+    "chapterId": "cmq1nnhye0001watge5kdo7w7",
+    "chapter": {
+      "id": "cmq1nnhye0001watge5kdo7w7",
+      "name": "chapte1 ",
+      "orderNo": 1,
+      "subjectId": "cmpy06tpl0001waj05gdxtjdr",
+      "isActive": true,
+      "createdAt": "2026-06-06T01:09:04.550Z",
+      "updatedAt": "2026-06-06T01:09:04.550Z",
+      "subject": {
+        "id": "cmpy06tpl0001waj05gdxtjdr",
+        "name": "Bangla 2",
+        "adminDisplayName": "SSC Bangla 2",
+        "isActive": false,
+        "createdAt": "2026-06-03T11:48:56.937Z",
+        "updatedAt": "2026-06-03T16:50:29.550Z"
+      }
+    }
+  }
+]
+
+DELETE /api/v1/exam/{examId}/chapters/{chapterId}
+
+
+
+EXAM MCQs
+POST /api/v1/exam/{examId}/mcqs
+{
+  "mcqIds": [
+    "cmq1nomn60009watg36xn33jb",
+    "cmq1novez000bwatgpff6jo0y"
+  ]
+}
+
+Response 
+[
+  {
+    "id": "cmq1ofr110000waq4pf3ktzn8",
+    "examId": "cmq1nar5i0001wah8ypt2268w",
+    "mcqId": "cmq1nomn60009watg36xn33jb",
+    "orderNo": 1,
+    "mark": "1",
+    "createdAt": "2026-06-06T01:31:02.677Z",
+    "mcq": {
+      "id": "cmq1nomn60009watg36xn33jb",
+      "question": {
+        "text": "dfg",
+        "image": null
+      },
+      "type": "STANDARD"
+    }
+  },
+  {
+    "id": "cmq1ofr110001waq40jznx7g3",
+    "examId": "cmq1nar5i0001wah8ypt2268w",
+    "mcqId": "cmq1novez000bwatgpff6jo0y",
+    "orderNo": 2,
+    "mark": "1",
+    "createdAt": "2026-06-06T01:31:02.677Z",
+    "mcq": {
+      "id": "cmq1novez000bwatgpff6jo0y",
+      "question": {
+        "text": "dfg",
+        "image": null
+      },
+      "type": "STANDARD"
+    }
+  }
+]
+GET /api/v1/exam/{examId}/mcqs
+
+Response
+[
+  {
+    "id": "cmq1ofr110000waq4pf3ktzn8",
+    "examId": "cmq1nar5i0001wah8ypt2268w",
+    "mcqId": "cmq1nomn60009watg36xn33jb",
+    "orderNo": 1,
+    "mark": "1",
+    "createdAt": "2026-06-06T01:31:02.677Z",
+    "mcq": {
+      "id": "cmq1nomn60009watg36xn33jb",
+      "subjectId": "cmpy06tpl0001waj05gdxtjdr",
+      "chapterId": "cmq1nnhye0001watge5kdo7w7",
+      "topicId": "cmq1no0m00005watgitd7rl74",
+      "type": "STANDARD",
+      "scenario": {
+        "text": "dfg",
+        "image": null
+      },
+      "question": {
+        "text": "dfg",
+        "image": null
+      },
+      "options": [
+        {
+          "key": "A",
+          "text": "dfg",
+          "image": null
+        },
+        {
+          "key": "B",
+          "text": "dfgd",
+          "image": null
+        }
+      ],
+      "correctOptionKey": "A",
+      "explanation": {
+        "text": "",
+        "image": null
+      },
+      "references": [],
+      "optionCount": 2,
+      "difficulty": "EASY",
+      "isPremium": false,
+      "isActive": true,
+      "createdAt": "2026-06-06T01:09:57.282Z",
+      "updatedAt": "2026-06-06T01:09:57.282Z"
+    }
+  },
+  {
+    "id": "cmq1ofr110001waq40jznx7g3",
+    "examId": "cmq1nar5i0001wah8ypt2268w",
+    "mcqId": "cmq1novez000bwatgpff6jo0y",
+    "orderNo": 2,
+    "mark": "1",
+    "createdAt": "2026-06-06T01:31:02.677Z",
+    "mcq": {
+      "id": "cmq1novez000bwatgpff6jo0y",
+      "subjectId": "cmpy06tpl0001waj05gdxtjdr",
+      "chapterId": "cmq1nnhye0001watge5kdo7w7",
+      "topicId": "cmq1no0m00005watgitd7rl74",
+      "type": "STANDARD",
+      "scenario": {
+        "text": "dfg",
+        "image": null
+      },
+      "question": {
+        "text": "dfg",
+        "image": null
+      },
+      "options": [
+        {
+          "key": "A",
+          "text": "b",
+          "image": null
+        },
+        {
+          "key": "B",
+          "text": "a",
+          "image": null
+        }
+      ],
+      "correctOptionKey": "A",
+      "explanation": {
+        "text": "",
+        "image": null
+      },
+      "references": [],
+      "optionCount": 2,
+      "difficulty": "EASY",
+      "isPremium": false,
+      "isActive": true,
+      "createdAt": "2026-06-06T01:10:08.651Z",
+      "updatedAt": "2026-06-06T01:10:08.651Z"
+    }
+  }
+]
+
+DELETE /api/v1/exam/{examId}/mcqs/{mcqId}

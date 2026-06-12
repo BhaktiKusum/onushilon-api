@@ -1,0 +1,117 @@
+Get subject
+GET /api/v1/subject-assignments/academic-level/{academicLevelId}
+Response
+[
+  {
+    "id": "cmpy06upj0002waj0qyzhllw3",
+    "academicLevelId": "cmpwlkz0a0000wa0o4iv1yo4e",
+    "subjectId": "cmpy06tpl0001waj05gdxtjdr",
+    "createdAt": "2026-06-03T11:48:58.231Z",
+    "subject": {
+      "id": "cmpy06tpl0001waj05gdxtjdr",
+      "name": "Bangla",
+      "adminDisplayName": "SSC Bangla fd",
+      "isActive": true,
+      "createdAt": "2026-06-03T11:48:56.937Z",
+      "updatedAt": "2026-06-03T15:08:36.153Z"
+    }
+  }
+]
+
+Get Chapter
+Subject Chapters
+GET /api/v1/chapters
+subjectId * (query)
+Response
+[
+  {
+    "id": "cmpy7xswo0004wassvtafget8",
+    "name": "Chapter 1",
+    "orderNo": 3,
+    "subjectId": "cmpxrbxdo0001wa2orc6wrior",
+    "isActive": true,
+    "createdAt": "2026-06-03T15:25:52.920Z",
+    "updatedAt": "2026-06-03T15:25:52.920Z",
+    "subject": {
+      "id": "cmpxrbxdo0001wa2orc6wrior",
+      "name": "Bangla",
+      "adminDisplayName": "SSC Bangla",
+      "isActive": true,
+      "createdAt": "2026-06-03T07:40:58.428Z",
+      "updatedAt": "2026-06-03T07:40:58.428Z"
+    }
+  }
+]
+
+
+Details
+
+GET /api/v1/chapters/:id
+Response
+{
+  "id": "cmpy7xswo0004wassvtafget8",
+  "name": "Chapter 1",
+  "orderNo": 3,
+  "subjectId": "cmpxrbxdo0001wa2orc6wrior",
+  "isActive": true,
+  "createdAt": "2026-06-03T15:25:52.920Z",
+  "updatedAt": "2026-06-03T15:25:52.920Z",
+  "subject": {
+    "id": "cmpxrbxdo0001wa2orc6wrior",
+    "name": "Bangla",
+    "adminDisplayName": "SSC Bangla",
+    "isActive": true,
+    "createdAt": "2026-06-03T07:40:58.428Z",
+    "updatedAt": "2026-06-03T07:40:58.428Z"
+  }
+}
+
+GET /api/v1/topics
+chapterId * (query)
+Response
+[
+  {
+    "id": "cmpy88s880006wassse04yw02",
+    "name": "Topic A",
+    "orderNo": 4,
+    "chapterId": "cmpy7xswo0004wassvtafget8",
+    "isActive": true,
+    "createdAt": "2026-06-03T15:34:25.257Z",
+    "updatedAt": "2026-06-03T15:34:25.257Z",
+    "chapter": {
+      "id": "cmpy7xswo0004wassvtafget8",
+      "name": "Chapter 1 dfs"
+    }
+  }
+]
+Topics
+GET /api/v1/topics/:id
+
+
+Response
+{
+  "id": "cmpy88s880006wassse04yw02",
+  "name": "Topic A",
+  "orderNo": 4,
+  "chapterId": "cmpy7xswo0004wassvtafget8",
+  "isActive": true,
+  "createdAt": "2026-06-03T15:34:25.257Z",
+  "updatedAt": "2026-06-03T15:34:25.257Z",
+  "chapter": {
+    "id": "cmpy7xswo0004wassvtafget8",
+    "name": "Chapter 1 dfs",
+    "orderNo": 4,
+    "subjectId": "cmpxrbxdo0001wa2orc6wrior",
+    "isActive": true,
+    "createdAt": "2026-06-03T15:25:52.920Z",
+    "updatedAt": "2026-06-03T15:32:05.922Z",
+    "subject": {
+      "id": "cmpxrbxdo0001wa2orc6wrior",
+      "name": "Bangla",
+      "adminDisplayName": "SSC Bangla",
+      "isActive": true,
+      "createdAt": "2026-06-03T07:40:58.428Z",
+      "updatedAt": "2026-06-03T07:40:58.428Z"
+    }
+  }
+}
